@@ -1,0 +1,28 @@
+
+Link: https://www.youtube.com/watch?v=HWjuYaPe9_I&list=PLz-qdc-PbYk72spi9S6DzMihPXSZucPOi&index=6
+
+
+The Steps to Create Docker and deploy java jar in a docker.
+
+1. install docker
+2. create simple spring boot java web project
+		- create a Dockerfile in a global of the project
+				- In the docker file, (which image to use, copy th jar to your docker, do the same thing on cmd)
+						FROM openjdk:12-alpine
+						COPY target/JavaTobeDockerSpringBootApp-0.0.1-SNAPSHOT.jar /JavaDocker.jar
+						CMD ["java", "-jar", "/JavaDocker.jar"]
+3. Go To your Project and (CMD or bash)
+		1. build the docker file you created in your project(with "javatodocker") and the . is to access the any docker file in the project
+				docker build -t javatodocker .
+		2. run the created image (javadocker) in your defined port
+				docker run -d -p 8080:8080 javatodocker
+	    3. then go to your browser access the project
+	    		localhost:8080
+	    4 to stop the image
+	    		- first list all the images with their status
+	    				docker ps -a
+	    		- then select the image you want to stop
+	    				docker stop <id of image>
+	    				
+	    		
+	
